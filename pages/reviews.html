@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Reviews - Gym Power Store</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="../styles.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <script src="../script.js" defer></script>
+</head>
+<body>
+     <audio id="background-music" src="../images/music/gym-track.mp3" loop></audio>
+     <style>
+          .social-icon i{
+               
+               font-size: 50px;
+               color:red;
+               filter:drop-shadow(1px 1px 2px rgb(208, 202, 202));
+
+          }
+          .social-icon{
+               
+               height: fit-content;     
+               width: fit-content;
+               background-color: none;
+               border: none;
+              
+          }
+          /* -------------------- Music Button Styles (Start) -------------------- */
+          .music-player-container {
+               position: fixed;
+               bottom: 30px;
+               right: 30px;
+               z-index: 9999;
+               display: flex;
+          }
+          .play-button {
+               background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+               color: #e0e0e0;
+               border: 1px solid rgba(255, 255, 255, 0.1);
+               width: 55px;
+               height: 55px;
+               border-radius: 50%;
+               cursor: pointer;
+               font-size: 18px;
+               box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.2);
+               transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+               display: flex;
+               align-items: center;
+               justify-content: center;
+          }
+          .play-button:hover {
+               transform: scale(1.1) translateY(-4px);
+               box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7), inset 0 2px 5px rgba(255, 255, 255, 0.3);
+               background: linear-gradient(135deg, #2a2a2a 0%, #444444 100%);
+               color: #ffffff;
+          }
+          .play-button i {
+               margin: 0;
+               margin-left: 2px;
+          }
+          /* -------------------- Music Button Styles (End) -------------------- */
+     </style>
+     
+     <!-- HEADER -->
+     <header class="main-header">
+          <div class="header-content">
+               <div class="logo-section">
+                    <img src="../images/logo2.png" alt="Gym Power Store Logo" class="header-logo" />
+                    <span class="brand-name">GYM POWER</span>
+               </div>
+               <nav class="main-nav">
+                    <a href="home.html">Home</a>
+                    <a href="products.html">Products</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="reviews.html" class="active">Reviews</a>
+               </nav>
+               <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                         <i class="fa-solid fa-sun"></i>
+                    </button>
+                    <a href="cart.html" class="cart-link">
+                         <i class="fa-solid fa-cart-shopping"></i>
+                         <span>Cart (<span id="cart-count">0</span>)</span>
+                    </a>
+               </div>
+          </div>
+     </header>
+     <div class="music-player-container">
+          <audio id="background-music" src="../images/music/gym-track.mp3" loop></audio>
+          <button id="play-pause-btn" class="play-button" aria-label="Play gym music">
+               <i class="fas fa-play"></i>
+          </button>
+     </div>
+     <!-- MAIN CONTENT -->
+     <main class="main-content">
+          <section class="reviews-section">
+               <h2 class="section-title">Customer Reviews</h2>
+               
+               <!-- Overall Rating Summary -->
+               <div class="rating-summary">
+                    <div class="overall-rating">
+                         <h3>Overall Rating</h3>
+                         <div class="rating-display">
+                              <span class="rating-number" id="overall-rating">4.5</span>
+                              <div class="stars-large" id="overall-stars">
+                                   <i class="fa-solid fa-star"></i>
+                                   <i class="fa-solid fa-star"></i>
+                                   <i class="fa-solid fa-star"></i>
+                                   <i class="fa-solid fa-star"></i>
+                                   <i class="fa-solid fa-star-half-stroke"></i>
+                              </div>
+                              <p class="review-count">Based on <span id="total-reviews">0</span> reviews</p>
+                         </div>
+                    </div>
+               </div>
+
+               <!-- Write a Review Form -->
+               <div class="write-review-container">
+                    <h3>Write a Review</h3>
+                    <form id="review-form" class="review-form">
+                         <div class="form-group">
+                              <label for="reviewer-name">Your Name:</label>
+                              <input type="text" id="reviewer-name" name="name" required>
+                         </div>
+                         <div class="form-group">
+                              <label for="product-select">Product:</label>
+                              <select id="product-select" name="product" required>
+                                   <option value="">Select a product</option>
+                                   <option value="Training Shoes">Training Shoes</option>
+                                   <option value="Dumbbells">Dumbbells Set</option>
+                                   <option value="Gym T-Shirt">Gym T-Shirt</option>
+                                   <option value="Resistance Bands">Resistance Bands</option>
+                                   <option value="Gym Bag">Gym Bag</option>
+                                   <option value="Protein Shaker">Protein Shaker</option>
+                                   <option value="Gym Hoodie">Gym Hoodie</option>
+                                   <option value="Water Bottle">Water Bottle</option>
+                              </select>
+                         </div>
+                         <div class="form-group">
+                              <label>Your Rating:</label>
+                              <div class="star-rating-input" id="star-rating">
+                                   <i class="fa-regular fa-star" data-rating="1"></i>
+                                   <i class="fa-regular fa-star" data-rating="2"></i>
+                                   <i class="fa-regular fa-star" data-rating="3"></i>
+                                   <i class="fa-regular fa-star" data-rating="4"></i>
+                                   <i class="fa-regular fa-star" data-rating="5"></i>
+                              </div>
+                              <input type="hidden" id="rating-value" name="rating" value="0" required>
+                         </div>
+                         <div class="form-group">
+                              <label for="review-text">Your Review:</label>
+                              <textarea id="review-text" name="review" rows="5" required placeholder="Share your experience with this product..."></textarea>
+                         </div>
+                         <button type="submit" class="submit-btn">Submit Review</button>
+                    </form>
+               </div>
+
+               <!-- Reviews List -->
+               <div class="reviews-list">
+                    <h3>Customer Reviews</h3>
+                    <div id="reviews-container">
+                         <!-- Reviews will be dynamically added here -->
+                    </div>
+               </div>
+          </section>
+     </main>
+
+     <!-- FOOTER -->
+     <footer class="main-footer">
+          <div class="footer-content">
+               <div class="footer-links">
+                    <a href="home.html">Home</a>
+                    <a href="products.html">Products</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="reviews.html">Reviews</a>
+               </div>
+               <div class="social-media">
+                    <a href="#" class="social-icon" aria-label="Facebook">
+                         <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram">
+                         <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Snapchat">
+                         <i class="fa-brands fa-snapchat"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="TikTok">
+                         <i class="fa-brands fa-tiktok"></i>
+                    </a>
+               </div>
+               <div class="footer-bottom">
+                    <p class="footer-credit">Designed by Karim Salah</p>
+                    <p>© 2025 Gym Power Store. All Rights Reserved.</p>
+               </div>
+          </div>
+     </footer>
+</body>
+</html>
+

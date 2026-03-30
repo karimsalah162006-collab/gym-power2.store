@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>Gym POWER Store</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="../styles.css" />
+     <style>
+          .social-icon i {
+               font-size: 50px;
+               color: #808080;
+               filter: drop-shadow(1px 1px 2px rgb(208, 202, 202));
+          }
+          .social-icon {
+               height: fit-content;
+               width: fit-content;
+               background-color: none;
+               border: none;
+          }
+          /* -------------------- Music Button Styles (Start) -------------------- */
+          .music-player-container {
+               position: fixed;
+               bottom: 30px;
+               right: 30px;
+               z-index: 9999;
+               display: flex;
+          }
+          .play-button {
+               background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+               color: #e0e0e0;
+               border: 1px solid rgba(255, 255, 255, 0.1);
+               width: 55px;
+               height: 55px;
+               border-radius: 50%;
+               cursor: pointer;
+               font-size: 18px;
+               box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.2);
+               transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+               display: flex;
+               align-items: center;
+               justify-content: center;
+          }
+          .play-button:hover {
+               transform: scale(1.1) translateY(-4px);
+               box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7), inset 0 2px 5px rgba(255, 255, 255, 0.3);
+               background: linear-gradient(135deg, #2a2a2a 0%, #444444 100%);
+               color: #ffffff;
+          }
+          .play-button i {
+               margin: 0;
+               margin-left: 2px;
+          }
+          /* -------------------- Music Button Styles (End) -------------------- */
+     </style>
+     <link rel="stylesheet" href="../logout_btn.css" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+          integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <script src="../script.js" defer></script>
+</head>
+<body>
+     <audio id="background-music" src="../images/music/abracadabra.mp3" loop></audio>
+     <div class="music-player-container">
+          <button id="play-pause-btn" class="play-button" aria-label="Play gym music">
+               <i class="fas fa-play"></i>
+          </button>
+     </div>
+     <header class="main-header">
+          <div class="header-content">
+               <div class="logo-section">
+                    <img src="../images/logo2.png" alt="Gym Power Store Logo" class="header-logo" />
+                    <span class="brand-name">GYM POWER</span>
+               </div>
+               <nav class="main-nav">
+                    <a href="home.html" class="active"
+                         onclick="event.preventDefault(); window.location.reload();">Home</a>
+                    <a href="products.html">Products</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="reviews.html">Reviews</a>
+               </nav>
+               <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                         <i class="fa-solid fa-sun"></i>
+                    </button>
+                    <a href="cart.html" class="cart-link">
+                         <i class="fa-solid fa-cart-shopping"></i>
+                         <span>Cart (<span id="cart-count">0</span>)</span>
+                    </a>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+               </div>
+          </div>
+     </header>
+     <main class="main-content">
+          <section class="hero">
+               <div class="hero-content">
+                    <h1 class="hero-title">Welcome to Gym Power Store</h1>
+                    <p class="hero-subtitle">Your ultimate destination for premium gym and sports gear.</p>
+                    <a href="products.html" class="shop-now-btn">
+                         Shop Now
+                         <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+               </div>
+          </section>
+     </main>
+     <footer class="main-footer">
+          <div class="footer-content">
+               <div class="footer-links">
+                    <a href="home.html" onclick="event.preventDefault(); window.location.reload();">Home</a>
+                    <a href="products.html">Products</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="reviews.html">Reviews</a>
+               </div>
+               <div class="social-icon-row">
+                    <div class="social-media">
+                         <a href="https://www.facebook.com/YourPageName" class="social-icon" id="facebook"
+                              aria-label="Facebook">
+                              <i class="fa-brands fa-facebook"></i>
+                              <a href="https://www.instagram.com/YourProfileName" class="social-icon"
+                                   aria-label="Instagram">
+                                   <i class="fa-brands fa-instagram"></i>
+                              </a>
+                              <a href="https://www.snapchat.com/add/YourUsername" class="social-icon"
+                                   aria-label="Snapchat">
+                                   <i class="fa-brands fa-snapchat-ghost"></i>
+                              </a>
+                              <a href="https://www.tiktok.com/@YourUsername" class="social-icon" aria-label="TikTok">
+                                   <i class="fa-brands fa-tiktok"></i>
+                              </a>
+                    </div>
+               </div>
+               <div class="footer-bottom">
+                    <p class="footer-credit">Designed by Karim Salah</p>
+                    <p>© 2025 Gym Power Store. All Rights Reserved.</p>
+               </div>
+          </div>
+     </footer>
+     <script>
+          function logout() {
+               localStorage.removeItem("loggedIn");
+               window.location.href = "../index.html";
+          }
+     </script>
+</body>
+</html>
